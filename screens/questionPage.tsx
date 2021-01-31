@@ -95,12 +95,12 @@ nextQuestion = (button: string) => {
   console.log(this.state.points, 'points')
   if(this.state.navigateAgain){
     setTimeout(() => 
-    this.props.navigation.push("QuestionPage", {questionList: this.props.navigation.state.params.questionList, questionCounter: this.state.questionCounter, points:this.state.points}) 
+    this.props.navigation.push("QuestionPage", {title:this.props.navigation.state.params.title, questionList: this.props.navigation.state.params.questionList, questionCounter: this.state.questionCounter, points:this.state.points}) 
     
     , 100) 
    
   } else {
-  this.props.navigation.navigate("TriviaComplete", {points: this.state.points}) 
+  this.props.navigation.navigate("TriviaComplete", {points: this.state.points, title:this.props.navigation.state.params.title}) 
   }
   
 

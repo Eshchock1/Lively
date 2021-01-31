@@ -1,9 +1,10 @@
 import React, { useState, useEffect, Component} from 'react';
-import { StyleSheet, Text, View, KeyboardAvoidingView,TouchableOpacity, Keyboard, Dimensions, Image, Modal, Alert, ScrollView, ImageBackground} from 'react-native';
+import { StyleSheet, Text, View, KeyboardAvoidingView,TouchableOpacity, Dimensions, Image, Modal, Alert, ScrollView, ImageBackground} from 'react-native';
 import firebase from "../firebase";
 import {Form, Item, Label, Input, Button} from 'native-base';
 // import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export function normalize(size) {
   return (Dimensions.get("window").width + Dimensions.get("window").height) / (1080/ size)
@@ -62,14 +63,18 @@ export default class WelcomePage extends Component {
         },
       },
       questionCounter: -1,
-      points: 0
-
+      points: 0,
+      triviaComplete: false,
       
       }
     }
 
-    componentDidMount() {
-      // make req here
+    async componentDidMount() {
+      // AsyncStorage.clear();
+      const complete = await AsyncStorage.getItem(this.state.title);
+      if (complete == "true") {
+        this.setState({triviaComplete:true})
+      }
     }
   
 
@@ -83,9 +88,13 @@ export default class WelcomePage extends Component {
       return(
         <View  style={{justifyContent:'flex-end', alignItems: 'center'}}>
           <Text style={{paddingTop: normalize(40), fontSize: (Dimensions.get("window").width + Dimensions.get("window").height) / (1080/30), fontFamily: 'MuliBlack', marginBottom: 25}}><Text>Trivia Is </Text><Text style={{color: this.state.color}}>Live</Text></Text>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate("QuestionPage", {questionList: this.state.questions, questionCounter: this.state.questionCounter, points: this.state.points})} style={{width: normalize(275), backgroundColor: this.state.color, justifyContent: 'center', alignItems: 'center', padding: '4%', borderRadius: 10}}>
-            <Text style={{fontSize: (Dimensions.get("window").width + Dimensions.get("window").height) / (1080/18), fontFamily: 'MuliBlack', color: 'white'}}>Join Now</Text>
-          </TouchableOpacity>
+          {this.state.triviaComplete?<TouchableOpacity style={{width: normalize(275), backgroundColor: "#F0F0F0", justifyContent: 'center', alignItems: 'center', padding: '4%', borderRadius: 10}}>
+            <Text style={{fontSize: (Dimensions.get("window").width + Dimensions.get("window").height) / (1080/18), fontFamily: 'MuliBlack', color: 'white'}}>Trivia Complete</Text>
+          </TouchableOpacity>:
+          <TouchableOpacity onPress={() => this.props.navigation.navigate("QuestionPage", {title:this.state.title, questionList: this.state.questions, questionCounter: this.state.questionCounter, points: this.state.points})} style={{width: normalize(275), backgroundColor: this.state.color, justifyContent: 'center', alignItems: 'center', padding: '4%', borderRadius: 10}}>
+          <Text style={{fontSize: (Dimensions.get("window").width + Dimensions.get("window").height) / (1080/18), fontFamily: 'MuliBlack', color: 'white'}}>Join Now</Text>
+        </TouchableOpacity>}
+          
         </View>
       )
     } else {
@@ -93,7 +102,7 @@ export default class WelcomePage extends Component {
         <View style={{justifyContent:'flex-end', alignItems: 'center'}}>
           <Text style={{paddingTop: normalize(40), fontSize: (Dimensions.get("window").width + Dimensions.get("window").height) / (1080/30), fontFamily: 'MuliBlack', marginBottom: 25}}><Text>Trivia </Text><Text style={{color: this.state.color}}>Not</Text><Text> Live</Text></Text>
           <View style={{width: normalize(275), backgroundColor: '#F0F0F0', justifyContent: 'center', alignItems: 'center', padding: '4%', borderRadius: 10}}>
-            <Text style={{fontSize: (Dimensions.get("window").width + Dimensions.get("window").height) / (1080/18), fontFamily: 'MuliBlack', color: 'white'}}>Join Now</Text>
+            <Text style={{fontSize: (Dimensions.get("window").width + Dimensions.get("window").height) / (1080/18), fontFamily: 'MuliBlack', color: 'white'}}>Coming Soon</Text>
           </View>
         </View>
       )

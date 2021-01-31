@@ -17,7 +17,6 @@ export default class App extends Component {
   }
   
   async componentDidMount() {
-
     try {
       await Font.loadAsync({
         'MuliBlack': require("./assets/muli/Muli-Black.ttf"),

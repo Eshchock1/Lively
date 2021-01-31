@@ -1,6 +1,8 @@
 import React, { useState, useEffect, Component, } from 'react';
-import { StyleSheet, Text, View, KeyboardAvoidingView,TouchableWithoutFeedback, Keyboard, Dimensions, Image, Modal, ScrollView, ImageBackground, Pressable} from 'react-native';
+import { StyleSheet, Text, View,TouchableWithoutFeedback, Keyboard, Dimensions, Image, Modal, ScrollView, ImageBackground, Pressable} from 'react-native';
 import firebase from "../firebase";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import {Form, Item, Label, Input, Button} from 'native-base';
 import { TouchableHighlight, TouchableOpacity } from 'react-native-gesture-handler';
 export function normalize(size) {
@@ -18,9 +20,27 @@ constructor(props) {
 
 }
 
-componentDidMount = () => {
+async componentDidMount () {
+  await AsyncStorage.setItem(this.props.navigation.state.params.title, "true");
+  let  previous_events;
+  try {
+   previous_events = await AsyncStorage.getItem("previous_events");
 
-  // make posts to database here
+   if (!previous_events) {
+    await AsyncStorage.setItem('previous_events', JSON.stringify([]));
+   } 
+
+}
+catch {
+  const hello = await AsyncStorage.setItem('previous_events', JSON.stringify([]));
+
+}
+
+  let previous_events_new = [];
+  let d = new Date();
+  previous_events_new.push({name:this.props.navigation.state.params.title, score:this.props.navigation.state.params.points, date:d.toString().split(" ")[1] + " " + d.toString().split(" ")[2] + " " + d.toString().split(" ")[3]})
+  console.log(previous_events_new)
+  const hello = await AsyncStorage.setItem("previous_events", JSON.stringify(previous_events_new));
 
 
 }
