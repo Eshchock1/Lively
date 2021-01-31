@@ -2,6 +2,7 @@ import { createStackNavigator, TransitionPresets } from 'react-navigation-stack'
 import { createAppContainer } from 'react-navigation';
 import Events from '../screens/events';
 import EventsInfo from '../screens/eventInfo';
+import QuestionPage from "../screens/questionPage"
 
 
 const HomeStack = createStackNavigator({
@@ -17,6 +18,13 @@ const HomeStack = createStackNavigator({
             headerShown: false,
         }
     },
+    QuestionPage: {
+        screen: QuestionPage,
+        navigationOptions: {
+            headerShown: false
+        }
+    }
+    
   
     
 }, {
@@ -24,6 +32,7 @@ const HomeStack = createStackNavigator({
         ...TransitionPresets.SlideFromRightIOS,
     },
     initialRouteName:'Events',
+    
 });
 
 export default createAppContainer(HomeStack);
