@@ -26,6 +26,7 @@ render(){
         <View style={{width: "100%", height: normalize(60), backgroundColor:"#E84E61", borderRadius: normalize(10), marginTop: "8%", flexDirection: "row", alignItems:"center", marginBottom: "6%"}}>
           <Text style={{fontFamily:"MuliBlack", marginLeft: "7.5%", fontSize:normalize(22.5), color: 'white'}}>69</Text>
           <Text style={{fontFamily:"MuliRegular", marginLeft: "7.5%", fontSize:normalize(17), color: 'white'}}>{firebase.auth().currentUser.displayName}</Text>
+          <Text style={{fontFamily:"MuliRegular", position:'absolute', right: "7.5%", fontSize:normalize(18), color:'white'}}>200 pts</Text>                
         </View>
         <ScrollView>
         {Object.keys(this.state.leaderboard).map((person, index) => {
@@ -33,9 +34,7 @@ render(){
                 <View key={index} style={{width: "100%", height: normalize(60), backgroundColor:index<3?"#FDB531":"#F5F5F5", borderRadius: normalize(10), marginTop: "6%", flexDirection: "row", alignItems:"center"}}>
                 <Text style={{fontFamily:"MuliBlack", marginLeft: "7.5%", fontSize:normalize(22.5), color:index<3?"white":"#929292"}}>{index+1}</Text>
                 <Text style={{fontFamily:"MuliRegular", marginLeft: "7.5%", fontSize:normalize(17), color:index<3?"white":"#929292"}}>{this.state.leaderboard[person].name}</Text>
-                <Text style={{fontFamily:"MuliRegular", position:'absolute', right: "7.5%", fontSize:normalize(18), color:index<3?"white":"#929292"}}>{this.state.leaderboard[person].score} pts</Text>
-
-                
+                <Text style={{fontFamily:"MuliRegular", position:'absolute', right: "7.5%", fontSize:normalize(18), color:index<3?"white":"#929292"}}>{this.state.leaderboard[person].score} pts</Text>                
                 </View>
             )
             })}

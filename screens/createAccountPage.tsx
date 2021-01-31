@@ -18,7 +18,7 @@ const signUpUser = (email, password) => {
   var emailTrimmed = email.trim();
   var userName = name.trim();
   if (userName.length == 0) {
-    setErrortext('Please enter a name')
+    setErrortext('Please enter a username')
   }
   else if (emailTrimmed.length == 0) {
     setErrortext('Please enter an email')
@@ -65,7 +65,7 @@ return (
       <Form style={{alignItems:"center", marginTop:normalize(25), width:'100%'}}>
       <Item style={{backgroundColor:'#F5F5F5', width:"100%", borderRadius:10, justifyContent:'center', paddingLeft:20, marginTop:normalize(20), marginLeft:0, height:normalize(60)}}>
     <Input 
-      placeholder="Name"
+      placeholder="Username"
       autoCorrect={false}
       style={{color:"black", fontFamily:"MuliLight",}}
       autoCapitalize="none"
