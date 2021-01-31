@@ -15,34 +15,17 @@ export default class WelcomePage extends Component {
     super(props)
     
     this.state = {
-      events: {
-        symptom1: {
-          title: 'Basketball',
-          live: 'Currently Live',
-          image: require("../assets/basketball.png"),
-          color: '#FDB531'
-        },
-        symptom2: {
-          title: 'Football',
-          live: 'Not Live',
-          image: require("../assets/football.png"),
-          color: '#548EFF'
-        },
-        symptom3: {
-          title: 'Tennis',
-          live: 'Not Live',
-          image: require("../assets/tennis.png"),
-          color: '#E84E61'
-        },
-        symptom4: {
-          title: 'Basketball',
-          live: 'Currently Live',
-          image: require("../assets/basketball.png"),
-          color: '#FDB531'
-        },
-      },
+      image: this.props.navigation.state.params.image,
+      title: this.props.navigation.state.params.title,
+      live: this.props.navigation.state.params.live,
+      color: this.props.navigation.state.params.color
+      
         
       }
+    }
+
+    componentDidMount() {
+      console.log(this.props.navigation.state.params.image, this.props.navigation.state.params.title, this.props.navigation.state.params.live)
     }
   
 
@@ -51,25 +34,57 @@ export default class WelcomePage extends Component {
     this.props.navigation.navigate('CreateAccountPage');
   }
 
+  renderTrivia = () => {
+    if(this.state.live == 'Currently Live') {
+      return(
+        <View  style={{justifyContent:'flex-end', alignItems: 'center'}}>
+          <Text style={{paddingTop: normalize(40), fontSize: (Dimensions.get("window").width + Dimensions.get("window").height) / (1080/30), fontFamily: 'MuliBlack', marginBottom: 25}}><Text>Trivia Is </Text><Text style={{color: this.state.color}}>Live</Text></Text>
+          <TouchableOpacity style={{width: normalize(275), backgroundColor: this.state.color, justifyContent: 'center', alignItems: 'center', padding: '4%', borderRadius: 10}}>
+            <Text style={{fontSize: (Dimensions.get("window").width + Dimensions.get("window").height) / (1080/18), fontFamily: 'MuliBlack', color: 'white'}}>Join Now</Text>
+          </TouchableOpacity>
+        </View>
+      )
+    } else {
+      return(
+        <View style={{justifyContent:'flex-end', alignItems: 'center'}}>
+          <Text style={{paddingTop: normalize(40), fontSize: (Dimensions.get("window").width + Dimensions.get("window").height) / (1080/30), fontFamily: 'MuliBlack', marginBottom: 25}}><Text>Trivia </Text><Text style={{color: this.state.color}}>Not</Text><Text> Live</Text></Text>
+          <View style={{width: normalize(275), backgroundColor: '#F0F0F0', justifyContent: 'center', alignItems: 'center', padding: '4%', borderRadius: 10}}>
+            <Text style={{fontSize: (Dimensions.get("window").width + Dimensions.get("window").height) / (1080/18), fontFamily: 'MuliBlack', color: 'white'}}>Join Now</Text>
+          </View>
+        </View>
+      )
+    }
+  }
+
 render(){
   return (
       <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
         <View style={{flex:1}}>
-          <View style={{ paddingTop: '15%', paddingLeft: '10%', paddingRight: '10%', height: (Dimensions.get("window").width + Dimensions.get("window").height) / (1080/350), backgroundColor:'#FDB531', borderBottomRightRadius:normalize(30), borderBottomLeftRadius:normalize(30)}}>
-            <View style={{flex: 0.1, flexDirection: 'row'}}>
+          <View style={{ paddingTop: '15%', paddingLeft: '10%', paddingRight: '10%', height: (Dimensions.get("window").width + Dimensions.get("window").height) / (1080/350), backgroundColor:this.state.color, borderBottomRightRadius:normalize(30), borderBottomLeftRadius:normalize(30)}}>
               <View style={{flex: 0.2}}>
+                
+
+              </View>
+            <View style={{flex: 0.5}}>
                 <Ionicons name="ios-arrow-back" size={24} color="white" />
+
+
+              <Text style={{fontFamily: 'MuliBlack', fontSize: normalize(36), marginTop: normalize(80), color: 'white', zIndex: 100}}>{this.state.title}</Text>
+              <Text style={{fontFamily: 'MuliLight', fontSize: normalize(14), marginTop: normalize(10), color: 'white', zIndex: 100}}>Event {this.state.live}</Text>
+            </View>
+            <ImageBackground source={this.state.image} imageStyle={{ opacity: 0.15}} style={{ marginLeft: '15%', height: 350, width: 450, resizeMode: 'cover',}}/>
+            <View ></View>
+          </View>
+
+              <View style={{backgroundColor: 'white', height: normalize(350), justifyContents: 'center', alignItems: 'center'}}>
+                <View style={{marginTop: normalize(65)}}>
+                {this.renderTrivia()}
+
               </View>
             </View>
-            <View style={{flex: 0.5}}>
-              <Text style={{fontFamily: 'MuliBlack', fontSize: normalize(36), marginTop: normalize(80), color: 'white', zIndex: 100}}>Basketball</Text>
-              <Text style={{fontFamily: 'MuliLight', fontSize: normalize(14), marginTop: normalize(10), color: 'white', zIndex: 100}}>Event Currently Live</Text>
             </View>
-            <ImageBackground source={require("../assets/basketball.png")} imageStyle={{ opacity: 0.15}} style={{ marginLeft: '15%', height: 300, width: 450, resizeMode: 'cover',}}
 
- />
-          </View>
-        </View>
+          
         
         
           
