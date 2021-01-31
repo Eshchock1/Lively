@@ -52,6 +52,10 @@ Here's why our app is the optimal choice for your television production workflow
    npm start
    ```
    
+## Video Link
+
+VIdeo Link: https://drive.google.com/file/d/1UqTonXkkxi4dau_8_H2WibSOJ_19UA1_/view?usp=sharing
+   
    
 ## Contact
 
