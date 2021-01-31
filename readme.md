@@ -31,7 +31,7 @@ Here's why our app is the optimal choice for your television production workflow
    ```sh
    npm install
    ```
-4. Run Expo `config.js`
+4. Run Expo 
    ```JS
    expo start
    ```
