@@ -9,7 +9,7 @@
   <h3 align="center">Live.ly</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    Changing the way we engage audiences.
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
     <br />
