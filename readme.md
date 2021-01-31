@@ -29,7 +29,7 @@ Lively has 2 main components
 
 This cross platform mobile application (IOS and Android) was created with react native to serve as the platform for users to play daily trivia and view leaderboards. Using firebase realtime db to store information like trivia questions, leaderboard stats, and other live data, as well as firebase authentication for our mobile app auth. Using figma, we designed our mobile application to include 3 main pages, current events, leaderboard, and profile. Furthermore, an elegant trivia flow was also created for when trivia goes live. 
 
-A link demonstrating the mobile app: https://drive.google.com/file/d/1UqTonXkkxi4dau_8_H2WibSOJ_19UA1_/view?usp=sharing
+A link demonstrating the mobile app: https://drive.google.com/file/d/1UqTonXkkxi4dau_8_H2WibSOJ_19UA1_/view?usp=sharing \
 A link to the figma: https://www.figma.com/file/jk1MFeLW0GF1EtrJ1rtj4R/Untitled?node-id=23%3A1520
 
 1. Clone the repo
