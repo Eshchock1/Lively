@@ -60,6 +60,9 @@ VIdeo Link: https://drive.google.com/file/d/1UqTonXkkxi4dau_8_H2WibSOJ_19UA1_/vi
 ## Contact
 
 Eeshwar Chockalingam - eshchock1@gmail.com
+
 Vansh Sethi - vanshsethi17@gmail.com
+
 Hassan Alawie - hassan.alawie10@gmail.com
+
 Nushaine Ferdinand  - nushainef@gmail.com
