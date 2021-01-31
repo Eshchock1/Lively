@@ -35,7 +35,7 @@ render(){
             {Object.keys(this.state.previous_events).map((event, index) => {
 
 return(
-    <TouchableOpacity key={index} activeOpacity={0.75} onPress={()=>this.props.navigation.navigate('Leaderboard')} style={{backgroundColor:'#F5F5F5', width:'100%', height:normalize(70), alignItems:'center', paddingLeft:30, marginTop:normalize(20), borderRadius:15, flexDirection:'row'}}><Text style={{color:'#929292',fontSize:normalize(20), fontFamily:'MuliSemi'}}>{this.state.previous_events[event].score} pts</Text><View><Text style={{color:'#929292',fontSize:normalize(17), fontFamily:'MuliBold', paddingLeft:25,}}>{this.state.previous_events[event].name}</Text><Text style={{color:'#929292',fontSize:normalize(12), fontFamily:'MuliLight', paddingLeft:28,}}>{this.state.previous_events[event].date}</Text></View></TouchableOpacity>
+    <TouchableOpacity key={index} activeOpacity={0.75} style={{backgroundColor:'#F5F5F5', width:'100%', height:normalize(70), alignItems:'center', paddingLeft:30, marginTop:normalize(20), borderRadius:15, flexDirection:'row'}}><Text style={{color:'#929292',fontSize:normalize(20), fontFamily:'MuliSemi'}}>{this.state.previous_events[event].score} pts</Text><View><Text style={{color:'#929292',fontSize:normalize(17), fontFamily:'MuliBold', paddingLeft:25,}}>{this.state.previous_events[event].name}</Text><Text style={{color:'#929292',fontSize:normalize(12), fontFamily:'MuliLight', paddingLeft:28,}}>{this.state.previous_events[event].date}</Text></View></TouchableOpacity>
 )
 })}
             </ScrollView>
