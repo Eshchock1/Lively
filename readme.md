@@ -31,7 +31,7 @@ Here's why our app is the optimal choice for your television production workflow
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
+4. Run Expo `config.js`
    ```JS
-   const API_KEY = 'ENTER YOUR API';
+   expo start
    ```
