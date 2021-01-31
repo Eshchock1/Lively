@@ -10,15 +10,6 @@
 
   <p align="center">
     Changing the way we engage audiences.
-    <br />
-    <br />
-    <br />
-    <a href="https://github.com/Eshchock1/Lively/blob/main/assets/logo.png?raw=true">View Demo</a>
-    ·
-    <a href="https://github.com/Eshchock1/Lively/blob/main/assets/logo.png?raw=true">Report Bug</a>
-    ·
-    <a href="https://github.com/Eshchock1/Lively/blob/main/assets/logo.png?raw=true">Request Feature</a>
-  </p>
 </p>
 
 ## About The Project
