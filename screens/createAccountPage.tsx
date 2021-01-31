@@ -41,7 +41,7 @@ const signUpUser = (email, password) => {
         }
 
         console.log(error);
-      }).then(userCreated?(userInfo) =>{userInfo.user.updateProfile({displayName: userName}).then(firebase.auth().currentUser.reload()).then(() => {console.log(firebase.auth().currentUser.displayName)})}:null)
+      }).then((userInfo) =>{ userInfo.user.updateProfile({displayName: userName}).then(firebase.auth().currentUser.reload()).then(() => {console.log(firebase.auth().currentUser.displayName)})})
     }
 }
 

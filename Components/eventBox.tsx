@@ -4,13 +4,17 @@ import firebase from "../firebase";
 import {Form, Item, Label, Input, Button} from 'native-base';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
+export function normalize(size) {
+  return (Dimensions.get("window").width + Dimensions.get("window").height) / (1080/ size)
+}
 
 export default class WelcomePage extends Component {
 
-  signOut = () => {
-    firebase.auth().signOut().then(() => console.log('Signed out'));
-    this.props.navigation.navigate('CreateAccountPage');
-  }
+  constructor(props){
+    super(props)
+    
+    }
+  
 
 render(){
   return (
