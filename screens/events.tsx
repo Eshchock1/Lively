@@ -61,7 +61,7 @@ render(){
         {Object.keys(this.state.events).map((event, index) => {
 
           return(
-            <TouchableOpacity key={index} style={{height: (Dimensions.get("window").width + Dimensions.get("window").height) / (1080/110),  flexDirection: 'row', backgroundColor: this.state.events[event].color, marginTop: 20, borderRadius: 10}} onPress={() => this.props.navigation.navigate("EventsInfo")}>
+            <TouchableOpacity key={index} style={{height: (Dimensions.get("window").width + Dimensions.get("window").height) / (1080/110),  flexDirection: 'row', backgroundColor: this.state.events[event].color, marginTop: 20, borderRadius: 10}} onPress={() => this.props.navigation.navigate("EventsInfo", {image: this.state.events[event].image, live: this.state.events[event].live, title: this.state.events[event].title, color: this.state.events[event].color})}>
               <View style={{flex: 0.6, padding: '8%'}}>
                 <Text style={{fontFamily: 'MuliBlack', fontSize: (Dimensions.get("window").width + Dimensions.get("window").height) / (1080/22), paddingBottom: '5%',color: 'white' }}>{this.state.events[event].title}</Text>
                 <Text style={{fontFamily: 'MuliRegular', fontSize: (Dimensions.get("window").width + Dimensions.get("window").height) / (1080/14), color: 'white'}}>{this.state.events[event].live}</Text>
@@ -72,7 +72,6 @@ render(){
               </View>
             </TouchableOpacity>
           )
-          console.log(this.state.events[event].title, index)
           
         })}
         </View>
