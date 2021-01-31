@@ -23,9 +23,14 @@ Here's why our app is the optimal choice for your television production workflow
 
 ### Installation (mobile)
 
+This cross platform mobile application (IOS and Android) was created with react native to serve as the platform for users to play daily trivia and view leaderboards. Using firebase realtime db to store information like trivia questions, leaderboard stats, and other live data, as well as firebase authentication for our mobile app auth. Using figma, we designed our mobile application to include 3 main pages, current events, leaderboard, and profile. Furthermore, an elegant trivia flow was also created for when trivia goes live. 
+
+A link demonstrating the mobile: https://drive.google.com/file/d/1UqTonXkkxi4dau_8_H2WibSOJ_19UA1_/view?usp=sharing
+A link to the figma: https://drive.google.com/file/d/1UqTonXkkxi4dau_8_H2WibSOJ_19UA1_/view?usp=sharing
+
 1. Clone the repo
    ```sh
-   git clone https://github.com/Eshchock1/Lively
+   git clone https://github.com/your_username_/Project-Name.git
    ```
 3. Install NPM packages
    ```sh
@@ -38,6 +43,10 @@ Here's why our app is the optimal choice for your television production workflow
    
    
 ### Installation (web-app)
+
+The web application is a significant portion of the product. The web application serves as a producer dashboard for the producer to 1. manage when events go live based on the RSS feeds, 2. Generate trivia questions at the click of a single button, 3. Integrate seamlessly with RSS feeds. Once logged into the react web app, the producer is shown all the corresponding events from the RSS feed, and can choose when events will go live. Based on this, when sports related events are playing, the producer has the option to generate a certain number of question of their choice at the click of a button. The web app uses public facing APIs to automatically generate questions and answers corresponding to the information from the RSS feed.
+
+Link to web app repo: https://github.com/hassanalawie/LiveLy
 
 1. Clone the repo
    ```sh
@@ -60,9 +69,6 @@ VIdeo Link: https://drive.google.com/file/d/1UqTonXkkxi4dau_8_H2WibSOJ_19UA1_/vi
 ## Contact
 
 Eeshwar Chockalingam - eshchock1@gmail.com
-
 Vansh Sethi - vanshsethi17@gmail.com
-
 Hassan Alawie - hassan.alawie10@gmail.com
-
 Nushaine Ferdinand  - nushainef@gmail.com
