@@ -32,7 +32,9 @@ Here's why our app is the optimal choice for your television production workflow
    npm install
    ```
 4. Run Expo 
-   ```JS
+   ```sh
+   expo start
+   ```
    
    
 ### Installation (web-app)
