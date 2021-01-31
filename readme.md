@@ -56,5 +56,3 @@ Here's why our app is the optimal choice for your television production workflow
 ## Contact
 
 Eeshwar Chockalingam - eeshwarchock1@gmail.com
-
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
