@@ -20,6 +20,7 @@ export default class WelcomePage extends Component {
   }
   state = {
     previous_events: [],
+    rank:0,
 }
   async componentDidMount() {
     const focusListener = this.props.navigation.addListener("didFocus", async () => {
@@ -39,6 +40,9 @@ export default class WelcomePage extends Component {
       hello = []
       this.setState({previous_events:hello})
     }
+
+    const temp = await AsyncStorage.getItem("rank");
+    this.setState({rank:temp})
     
     });
 
@@ -51,7 +55,7 @@ render(){
       <View style={styles.container}>
             <Image source={require('../assets/logotext.png')} style={{width:normalize(150), height:normalize(50)}}/>
             <Text style={{fontFamily:'MuliBlack', fontSize:normalize(35), marginTop:normalize(30)}}>Your <Text style={{color:'#FDB531'}}>Profile</Text></Text>
-            <TouchableOpacity activeOpacity={0.75} onPress={()=>this.props.navigation.navigate('Leaderboard')} style={{backgroundColor:'#FDB531', width:'100%', height:normalize(70), alignItems:'center', paddingLeft:30, marginTop:normalize(30), borderRadius:15, flexDirection:'row'}}><Text style={{color:'white',fontSize:normalize(30), fontFamily:'MuliBlack'}}>36</Text><View><Text style={{color:'white',fontSize:normalize(17), fontFamily:'MuliBold', paddingLeft:25,}}>Today's Rank</Text><Text style={{color:'white',fontSize:normalize(12), fontFamily:'MuliLight', paddingLeft:28,}}>View Leaderboard</Text></View></TouchableOpacity>
+            <TouchableOpacity activeOpacity={0.75} onPress={()=>this.props.navigation.navigate('Leaderboard')} style={{backgroundColor:'#FDB531', width:'100%', height:normalize(70), alignItems:'center', paddingLeft:30, marginTop:normalize(30), borderRadius:15, flexDirection:'row'}}><Text style={{color:'white',fontSize:normalize(30), fontFamily:'MuliBlack'}}>{this.state.rank}</Text><View><Text style={{color:'white',fontSize:normalize(17), fontFamily:'MuliBold', paddingLeft:25,}}>Today's Rank</Text><Text style={{color:'white',fontSize:normalize(12), fontFamily:'MuliLight', paddingLeft:28,}}>View Leaderboard</Text></View></TouchableOpacity>
             <View style={{backgroundColor:'#E84E61', width:'100%', height:normalize(70), justifyContent:'center', paddingLeft:30, marginTop:normalize(20), borderRadius:15}}><Text style={{color:'white',fontSize:normalize(17), fontFamily:'MuliBold',}}>{firebase.auth().currentUser.displayName}</Text><TouchableOpacity activeOpacity={0.75} onPress={()=>this.signOut()}><Text style={{color:'white',fontSize:normalize(12), fontFamily:'MuliLight', }}><AntDesign name="poweroff" size={normalize(12)} color="white" />  Sign Out</Text></TouchableOpacity></View>
             {/* <TouchableOpacity activeOpacity={0.75} onPress={()=>this.signOut} style={{backgroundColor:'#E84E61', width:'100%', height:normalize(60), alignItems:'center', justifyContent:'center', marginTop:normalize(50), borderRadius:15,}}><Text style={{color:'white', fontSize:normalize(20), fontFamily:'MuliBold'}}><FontAwesome name="power-off" size={24} color="white" />   Sign Out</Text></TouchableOpacity> */}
             <Text style={{fontSize:normalize(25), fontFamily:'MuliBlack', marginTop:normalize(30),}}>Previous Events</Text>

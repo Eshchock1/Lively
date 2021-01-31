@@ -10,10 +10,18 @@ export function normalize(size) {
   return (Dimensions.get("window").width + Dimensions.get("window").height) / (1080/ size)
 }
 
+function shuffle(a) {
+  for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
 
 export default class WelcomePage extends Component {
 
   constructor(props){
+    
     super(props)
     
     this.state = {
@@ -21,8 +29,8 @@ export default class WelcomePage extends Component {
       title: this.props.navigation.state.params.title,
       live: this.props.navigation.state.params.live,
       color: this.props.navigation.state.params.color,
-      questions: {
-        question1: {
+      questions: [
+        {
           question: "Who was the coach of the Toronto Raptors?",
           optionA: "Vansh Sethi",
           optionB: "Nushaine Ferdinand",
@@ -30,7 +38,7 @@ export default class WelcomePage extends Component {
           optionD: "Kael Lacelle",
           correctAns: 'Vansh Sethi'
         },
-        question2: {
+        {
           question: "Who was the coach of the Boston Celtics?",
           optionA: "Vansh Sethi",
           optionB: "Nushaine Ferdinand",
@@ -38,7 +46,7 @@ export default class WelcomePage extends Component {
           optionD: "Eeshwar Chockalingam",
           correctAns: 'Hassan Alawie'
         },
-        question3: {
+        {
           question: "Who was the coach of the Boston Celtics?",
           optionA: "Vansh Sethi",
           optionB: "Nushaine Ferdinand",
@@ -46,7 +54,7 @@ export default class WelcomePage extends Component {
           optionD: "Eeshwar Chockalingam",
           correctAns: 'Eeshwar Chockalingam'
         },
-        question4: {
+         {
           question: "Who was the coach of the Boston Celtics?",
           optionA: "Vansh Sethi",
           optionB: "Nushaine Ferdinand",
@@ -54,7 +62,7 @@ export default class WelcomePage extends Component {
           optionD: "Eeshwar Chockalingam",
           correctAns: 'Nushaine Ferdinand '
         },
-        question5: {
+        {
           question: "Who was the coach of the Boston Celtics",
           optionA: "12345678",
           optionB: "12345678",
@@ -62,7 +70,7 @@ export default class WelcomePage extends Component {
           optionD: "12345678",
           correctAns: 'Nushaine Ferdinand '
         },
-      },
+      ],
       questionCounter: -1,
       points: 0,
       triviaComplete: false,
@@ -77,7 +85,61 @@ export default class WelcomePage extends Component {
         this.setState({triviaComplete:true})
       }
       BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
+
+
+      let self = this;
+      await firebase.database().ref('CurrentEvent/Questions/').on('value', async function (snapshot) {
+        // console.log(snapshot.val())
+        let questions = []
+        // console.log(snapshot.val().length)
+        console.log("-----------------------------------")
+        console.log("-----------------------------------")
+        console.log("-----------------------------------")
+        // for (let i=0;i<Object.keys(snapshot.val()).length;i++){
+          for (let key in snapshot.val()) {
+            // console.log(key)
+            // console.log(snapshot.val()[key])
+          let arr = [snapshot.val()[key]['answer'], snapshot.val()[key]['optionB'], snapshot.val()[key]['optionC'], snapshot.val()[key]['optionD']]
+          let shuffled = shuffle(arr);
+          questions.push({
+            question:snapshot.val()[key]["question"],
+            optionA:shuffled[0],
+            optionB:shuffled[1],
+            optionC:shuffled[2],
+            optionD:shuffled[3],
+            correctAns:snapshot.val()[key]['answer'],
+          })
+        }
+        self.setState({questions:questions})
+          // let arr = [snapshot.val()[i]['answer'], snapshot.val()[i]['optionB'], snapshot.val()[i]['optionC'], snapshot.val()[i]['optionD']]
+          // let shuffled = shuffle(arr);
+          // questions.push({
+          //   question:snapshot.val()[i]["question"],
+          //   optionA:shuffled[0],
+          //   optionB:shuffled[1],
+          //   optionC:shuffled[2],
+          //   optionD:shuffled[3],
+          //   correctAns:snapshot.val()[i]['answer'],
+          // })
+        }
+   
+        // console.log(questions[0])
+
+        // await self.setState({latestEvent: snapshot.val()});
+        // console.log(self.state.latestEvent)
+      )
+
+
+
+
+
     }
+
+
+
+
+
+
 
   componentWillUnmount() {
       BackHandler.removeEventListener('hardwareBackPress', this.handleBackButton);

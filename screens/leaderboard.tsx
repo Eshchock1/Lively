@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, KeyboardAvoidingView,TouchableWithoutFeedback, 
 import firebase from "../firebase";
 import {Form, Item, Label, Input, Button} from 'native-base';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 export function normalize(size) {
     return (Dimensions.get("window").width + Dimensions.get("window").height) / (1080/ size)
   }
@@ -10,13 +11,45 @@ export function normalize(size) {
 
 export default class WelcomePage extends Component {
 
+  readUserData() {
+    let rankings = []
+    let self = this;
+    firebase.database().ref('Leaderboard/').on('value', function (snapshot) {
+      let rankings = []
+      for (let key in snapshot.val()) {
+        console.log(key)
+        for (let bruh in snapshot.val()[key]) {
+        rankings.push({
+          name: key,
+          score: snapshot.val()[key][bruh]['points']
+        })
+      }
+      rankings.sort((a, b) => b.score - a.score);
+      self.setState({leaderboard:rankings})
+      let i = 0
+      rankings.forEach(async (e) => {
+        i +=1;
+        console.log(e['name'] == firebase.auth().currentUser.displayName)
+          self.setState({userStats:{score:e['score'], place:i,}})
+          const temp = await AsyncStorage.setItem("rank", i.toString());
+        }
+      
+      )
+    }});
+  }
+
+  componentDidMount() {
+    this.readUserData();
+  }
+
   signOut = () => {
     firebase.auth().signOut().then(() => console.log('Signed out'));
     this.props.navigation.navigate('CreateAccountPage');
   }
   state = {
+    userStats:0,
     leaderboard: [{name:'Vansh', score:1}, {name:'Nushaine', score:20}, {name:'Hassan', score:300}, {name:'Hassan', score:300}, {name:'Hassan', score:300}, {name:'Hassan', score:300}, {name:'Hassan', score:300}, {name:'Hassan', score:300}],
-}
+  }
 render(){
   return (
       <View style={styles.container}>
@@ -24,9 +57,9 @@ render(){
         <Text style={{fontFamily:'MuliBlack', fontSize:normalize(35), marginTop:normalize(40)}}>Leader<Text style={{color:'#FDB531'}}>board</Text></Text>
 
         <View style={{width: "100%", height: normalize(60), backgroundColor:"#E84E61", borderRadius: normalize(10), marginTop: "8%", flexDirection: "row", alignItems:"center", marginBottom: "6%"}}>
-          <Text style={{fontFamily:"MuliBlack", marginLeft: "7.5%", fontSize:normalize(22.5), color: 'white'}}>69</Text>
+          <Text style={{fontFamily:"MuliBlack", marginLeft: "7.5%", fontSize:normalize(22.5), color: 'white'}}>{this.state.userStats.place}</Text>
           <Text style={{fontFamily:"MuliRegular", marginLeft: "7.5%", fontSize:normalize(17), color: 'white'}}>{firebase.auth().currentUser.displayName}</Text>
-          <Text style={{fontFamily:"MuliRegular", position:'absolute', right: "7.5%", fontSize:normalize(18), color:'white'}}>200 pts</Text>                
+          <Text style={{fontFamily:"MuliRegular", position:'absolute', right: "7.5%", fontSize:normalize(18), color:'white'}}>{this.state.userStats.score} pts</Text>                
         </View>
         <ScrollView>
         {Object.keys(this.state.leaderboard).map((person, index) => {

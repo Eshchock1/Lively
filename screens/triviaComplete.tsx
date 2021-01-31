@@ -35,12 +35,40 @@ catch {
   const hello = await AsyncStorage.setItem('previous_events', JSON.stringify([]));
 
 }
-
   let previous_events_new = [];
   let d = new Date();
   previous_events_new.push({name:this.props.navigation.state.params.title, score:this.props.navigation.state.params.points, date:d.toString().split(" ")[1] + " " + d.toString().split(" ")[2] + " " + d.toString().split(" ")[3]})
   console.log(previous_events_new)
   const hello = await AsyncStorage.setItem("previous_events", JSON.stringify(previous_events_new));
+
+
+
+  
+  let b = 0
+
+  try {
+    base.database().ref('Leaderboard/' + String(firebase.auth().currentUser.displayName)).once('value', function (snapshot) {
+      b = snapshot.val()['points']
+    });
+    b += this.props.navigation.state.params.points
+    firebase.database().ref('Leaderboard/' + String(firebase.auth().currentUser.displayName)).update({
+      points: b,
+      name: firebase.auth().currentUser.displayName,
+    })
+  }
+
+  catch {
+    firebase.database().ref('Leaderboard/' + String(firebase.auth().currentUser.displayName)).push({
+      points: this.props.navigation.state.params.points,
+      name: firebase.auth().currentUser.displayName,
+    })
+  }
+
+  
+
+// fb
+
+
 
 
 }

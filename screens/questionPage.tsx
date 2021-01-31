@@ -13,7 +13,7 @@ constructor(props) {
     super(props)
     this.state = {
       questionCounter: this.props.navigation.state.params.questionCounter,
-      question: {},
+      question: [],
       navigateAgain: true,
       selectedABG: "#F5F5F5",
       selectedBBG: "#F5F5F5",
@@ -60,7 +60,7 @@ componentDidMount = () => {
 handleTimer () {
   this.setState({timer:this.state.timer - 1})
   if (this.state.timer <= 0) {
-    this.nextQuestion('e');
+    this.nextQuestion("E");
   }
 
 }
@@ -70,19 +70,26 @@ handleTimer () {
 nextQuestion = (button: string) => {
   this.setState({disabled:true})
   clearInterval(this.state.countdown)
-  if(button == 'a'){
+  if(button == "A"){
     this.setState({selectedABG: "#FDB531", selectedAWHITE: "#FFFFFF", selectedAWHITE2: "white"})
   }
-  if(button == 'b'){
+  if(button == 'B'){
     this.setState({selectedBBG: "#FDB531", selectedBWHITE: "#FFFFFF", selectedBWHITE2: "white"})
   }
-  if(button == 'c'){
+  if(button == 'C'){
     this.setState({selectedCBG: "#FDB531", selectedCWHITE: "#FFFFFF", selectedCWHITE2: "white"})
   }
-  if(button == 'd'){
+  if(button == 'D'){
     this.setState({selectedDBG: "#FDB531", selectedDWHITE: "#FFFFFF", selectedDWHITE2: "white"})
   }
-  if(button != 'e'){
+  console.log("------")
+  console.log("------")
+  console.log("------")
+  console.log("------")
+  console.log("------")
+  console.log(this.state.question.correctAns)
+  console.log(this.state.question['option' + button])
+  if(button != "E" && this.state.question['option' + button] == this.state.question.correctAns){
     this.setState({points:this.state.points + (1000 - Math.floor((Date.now() - this.state.starting) * (400/30000)))})
   }
 
@@ -114,7 +121,7 @@ render(){
             <ImageBackground source={require("../assets/basketball.png")} imageStyle={{ opacity: 0.15}} style={{ height: 60, width: 85, resizeMode: 'cover', right: 0, position: "absolute"}} />
         </View>
         <View style={{marginLeft: "6%", marginTop: "10%", width: "80%", flexDirection:'row', justifyContent:'space-evenly', alignItems:'center'}}>
-          <View style={{flex:0.7}}>
+          <View style={{flex:0.7, paddingRight:20,}}>
             <Text style={{fontFamily: "MuliBlack", fontSize:normalize(16), lineHeight: normalize(30)}}>{this.state.question.question}</Text>
           </View>
           <View style={{flex:0.3}}>
@@ -124,22 +131,22 @@ render(){
         </View>
         </View>
         
-        <Pressable disabled={this.state.disabled} onPress={() => this.nextQuestion('a')} style={{width:"80%", height: '9%', backgroundColor: this.state.selectedABG, marginTop: "10%", borderRadius: 10, flexDirection: "row", alignItems: "center"}}>
+        <Pressable disabled={this.state.disabled} onPress={() => this.nextQuestion("A")} style={{width:"80%", height: '9%', backgroundColor: this.state.selectedABG, marginTop: "10%", borderRadius: 10, flexDirection: "row", alignItems: "center"}}>
             <Text style={{fontSize: normalize(22), marginLeft: "7.5%", color: this.state.selectedAWHITE2, fontFamily: "MuliRegular"}}>A</Text>
             <Text style={{fontSize: normalize(18), marginLeft: "5%", color: this.state.selectedAWHITE, fontFamily: "MuliRegular"}}>{this.state.question.optionA}</Text>
         </Pressable>
 
-        <Pressable disabled={this.state.disabled} onPress={() => this.nextQuestion('b')} style={{width:"80%", height: '9%', backgroundColor: this.state.selectedBBG, marginTop: "5%", borderRadius: 10, flexDirection: "row", alignItems: "center"}}>
+        <Pressable disabled={this.state.disabled} onPress={() => this.nextQuestion('B')} style={{width:"80%", height: '9%', backgroundColor: this.state.selectedBBG, marginTop: "5%", borderRadius: 10, flexDirection: "row", alignItems: "center"}}>
             <Text style={{fontSize: normalize(22), marginLeft: "7.5%", color: this.state.selectedBWHITE2, fontFamily: "MuliRegular"}}>B</Text>
             <Text style={{fontSize: normalize(18), marginLeft: "5%", color: this.state.selectedBWHITE, fontFamily: "MuliRegular"}}>{this.state.question.optionB}</Text>
         </Pressable>
 
-        <Pressable disabled={this.state.disabled} onPress={() => this.nextQuestion('c')} style={{width:"80%", height: '9%', backgroundColor: this.state.selectedCBG, marginTop: "5%", borderRadius: 10, flexDirection: "row", alignItems: "center"}}>
+        <Pressable disabled={this.state.disabled} onPress={() => this.nextQuestion('C')} style={{width:"80%", height: '9%', backgroundColor: this.state.selectedCBG, marginTop: "5%", borderRadius: 10, flexDirection: "row", alignItems: "center"}}>
             <Text style={{fontSize: normalize(22), marginLeft: "7.5%", color: this.state.selectedCWHITE2, fontFamily: "MuliRegular"}}>C</Text>
             <Text style={{fontSize: normalize(18), marginLeft: "5%", color: this.state.selectedCWHITE, fontFamily: "MuliRegular"}}>{this.state.question.optionC}</Text>
         </Pressable>
 
-        <Pressable disabled={this.state.disabled} onPress={() => this.nextQuestion('d')} style={{width:"80%", height: '9%', backgroundColor: this.state.selectedDBG, marginTop: "5%", borderRadius: 10, flexDirection: "row", alignItems: "center"}}>
+        <Pressable disabled={this.state.disabled} onPress={() => this.nextQuestion("D")} style={{width:"80%", height: '9%', backgroundColor: this.state.selectedDBG, marginTop: "5%", borderRadius: 10, flexDirection: "row", alignItems: "center"}}>
             <Text style={{fontSize: normalize(22), marginLeft: "7.5%", color: this.state.selectedDWHITE2, fontFamily: "MuliRegular"}}>D</Text>
             <Text style={{fontSize: normalize(18), marginLeft: "5%", color: this.state.selectedDWHITE, fontFamily: "MuliRegular"}}>{this.state.question.optionD}</Text>
         </Pressable>
