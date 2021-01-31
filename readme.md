@@ -11,13 +11,12 @@
   <p align="center">
     Changing the way we engage audiences.
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://github.com/Eshchock1/Lively/blob/main/assets/logo.png?raw=true">View Demo</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
+    <a href="https://github.com/Eshchock1/Lively/blob/main/assets/logo.png?raw=true">Report Bug</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <a href="https://github.com/Eshchock1/Lively/blob/main/assets/logo.png?raw=true">Request Feature</a>
   </p>
 </p>
