@@ -27,7 +27,8 @@ constructor(props) {
       selectedBWHITE2: "#BEBEBE",
       selectedCWHITE2: "#BEBEBE",
       selectedDWHITE2: "#BEBEBE",
-      points: this.props.navigation.state.params.points
+      points: this.props.navigation.state.params.points,
+      timer: 30
     }
 
 
@@ -53,7 +54,15 @@ componentDidMount = () => {
 }
 
 calculatePoints = () => {
-
+  const numbers = [1, 2, 3, 4, 5]
+  if(this.state.timer > 0) {
+    this.setState({timer: this.state.timer -= 1})
+    setTimeout(() => {
+      return this.state.timer
+      this.calculatePoints()
+    }, 1000)
+  }
+  
 }
 
 nextQuestion = (button: string) => {
@@ -117,6 +126,9 @@ render(){
             <Text style={{fontSize: normalize(22), marginLeft: "7.5%", color: this.state.selectedDWHITE2, fontFamily: "MuliRegular"}}>D</Text>
             <Text style={{fontSize: normalize(18), marginLeft: "5%", color: this.state.selectedDWHITE, fontFamily: "MuliRegular"}}>{this.state.question.optionD}</Text>
         </Pressable>
+        <View> 
+          <Text>{this.calculatePoints()}</Text>
+        </View>
       </View>
   );}
 }

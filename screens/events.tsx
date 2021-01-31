@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, KeyboardAvoidingView,TouchableWithoutFeedback, 
 import firebase from "../firebase";
 import {Form, Item, Label, Input, Button} from 'native-base';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import * as rssParser from 'react-native-rss-parser';
 
 export function normalize(size) {
   return (Dimensions.get("window").width + Dimensions.get("window").height) / (1080/ size)
@@ -45,10 +46,17 @@ export default class WelcomePage extends Component {
     }
   
 
-  signOut = () => {
-    firebase.auth().signOut().then(() => console.log('Signed out'));
-    this.props.navigation.navigate('CreateAccountPage');
-  }
+    componentDidMount(){
+      fetch('https://news.demo.inception.cloud/inception/RunningOrder/RunningOrder.rss?id=3961')
+  .then((response) => response.text())
+  .then((responseData) => rssParser.parse(responseData))
+  .then((rss) => {
+    console.log(rss.items[0])
+    for (let i =0;i<10;i++) {
+      console.log(rss.items[i].inception_slug)
+    }
+  });
+    }
 
 render(){
   return (

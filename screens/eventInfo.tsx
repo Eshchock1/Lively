@@ -1,8 +1,8 @@
 import React, { useState, useEffect, Component} from 'react';
-import { StyleSheet, Text, View, KeyboardAvoidingView,TouchableWithoutFeedback, Keyboard, Dimensions, Image, Modal, Alert, ScrollView, ImageBackground} from 'react-native';
+import { StyleSheet, Text, View, KeyboardAvoidingView,TouchableOpacity, Keyboard, Dimensions, Image, Modal, Alert, ScrollView, ImageBackground} from 'react-native';
 import firebase from "../firebase";
 import {Form, Item, Label, Input, Button} from 'native-base';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+// import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
 
 export function normalize(size) {
@@ -103,25 +103,20 @@ render(){
   return (
       <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
         <View style={{flex:1}}>
-          <View style={{ paddingTop: '15%', paddingLeft: '10%', paddingRight: '10%', height: (Dimensions.get("window").width + Dimensions.get("window").height) / (1080/350), backgroundColor:this.state.color, borderBottomRightRadius:normalize(30), borderBottomLeftRadius:normalize(30)}}>
-              <View style={{flex: 0.2}}>
-                
-
-              </View>
-            <View style={{flex: 0.5}}>
-            <TouchableOpacity onPress={() => this.navigation.goBack()} style={{zIndex: 100}}>
+        <TouchableOpacity onPress={() => this.props.navigation.popToTop()} style={{zIndex: 100, position:'absolute', left:'10%', top:'12%'}}>
                 <Ionicons name="ios-arrow-back" size={24} color="white" />
-
                 </TouchableOpacity>
+          <View style={{ paddingTop: '15%', paddingLeft: '10%', paddingRight: '10%', height: (Dimensions.get("window").width + Dimensions.get("window").height) / (1080/350), backgroundColor:this.state.color, borderBottomRightRadius:normalize(30), borderBottomLeftRadius:normalize(30)}}>
+            <View style={{flex: 0.5}}>
 
               <Text style={{fontFamily: 'MuliBlack', fontSize: normalize(36), marginTop: normalize(80), color: 'white', zIndex: 100}}>{this.state.title}</Text>
               <Text style={{fontFamily: 'MuliLight', fontSize: normalize(14), marginTop: normalize(10), color: 'white', zIndex: 100}}>Event {this.state.live}</Text>
             </View>
-            <ImageBackground source={this.state.image} imageStyle={{ opacity: 0.15}} style={{ marginLeft: '15%', height: 350, width: 450, resizeMode: 'cover',}}/>
+            <ImageBackground source={this.state.image} imageStyle={{ opacity: 0.15}} style={{ marginLeft: '15%', height: 350, width: 450,}}/>
             <View ></View>
           </View>
 
-              <View style={{backgroundColor: 'white', height: normalize(350), justifyContents: 'center', alignItems: 'center'}}>
+              <View style={{backgroundColor: 'white', height: normalize(350), justifyContent: 'center', alignItems: 'center'}}>
                 <View style={{marginTop: normalize(65)}}>
                 {this.renderTrivia()}
 

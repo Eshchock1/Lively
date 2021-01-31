@@ -20,18 +20,16 @@ export default class App extends Component {
 
     try {
       await Font.loadAsync({
-        MuliBlack: require("./assets/muli/Muli-Black.ttf"),
-        MuliLight: require("./assets/muli/Muli-Light.ttf"),
-        MuliRegular: require("./assets/muli/Muli-Regular.ttf"),
-        MuliSemi: require("./assets/muli/Muli-SemiBold.ttf"),
-        MuliBold: require("./assets/muli/Muli-Bold.ttf"),
-        MuliBoldItalic: require("./assets/muli/Muli-BoldItalic.ttf")
-  
+        'MuliBlack': require("./assets/muli/Muli-Black.ttf"),
+        'MuliLight': require("./assets/muli/Muli-Light.ttf"),
+        'MuliRegular': require("./assets/muli/Muli-Regular.ttf"),
+        'MuliSemi': require("./assets/muli/Muli-SemiBold.ttf"),
+        'MuliBold': require("./assets/muli/Muli-Bold.ttf"),
+        'MuliBoldItalic': require("./assets/muli/Muli-BoldItalic.ttf")
       })
       this.setState({ fontLoaded: true })
     } catch (error) {
       console.log(error)
-      return
     }
   }
 
