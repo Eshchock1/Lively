@@ -22,7 +22,7 @@ useEffect(() => {
 
 return (
     <View style={styles.container}>
-        <WaveIndicator color='#FFAE6C' size={(Dimensions.get("window").width + Dimensions.get("window").height) / 10.8}/>
+        <WaveIndicator color='#E84E61' size={(Dimensions.get("window").width + Dimensions.get("window").height) / 10.8}/>
     </View>
 )
 }
@@ -30,7 +30,7 @@ return (
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#363940',
+    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   }

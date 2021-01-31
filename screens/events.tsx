@@ -46,17 +46,17 @@ export default class WelcomePage extends Component {
     }
   
 
-    componentDidMount(){
-      fetch('https://news.demo.inception.cloud/inception/RunningOrder/RunningOrder.rss?id=3961')
-  .then((response) => response.text())
-  .then((responseData) => rssParser.parse(responseData))
-  .then((rss) => {
-    console.log(rss.items[0])
-    for (let i =0;i<10;i++) {
-      console.log(rss.items[i].inception_slug)
-    }
-  });
-    }
+  //   componentDidMount(){
+  //     fetch('https://news.demo.inception.cloud/inception/RunningOrder/RunningOrder.rss?id=3961')
+  // .then((response) => response.text())
+  // .then((responseData) => rssParser.parse(responseData))
+  // .then((rss) => {
+  //   console.log(rss.items[0])
+  //   for (let i =0;i<10;i++) {
+  //     console.log(rss.items[i].inception_slug)
+  //   }
+  // });
+  //   }
 
 render(){
   return (

@@ -69,6 +69,7 @@ export default class WelcomePage extends Component {
     }
 
     componentDidMount() {
+      // make req here
     }
   
 

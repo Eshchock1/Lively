@@ -34,7 +34,7 @@ render(){
         <View style={{flex: 0.33, flexDirection: 'row'}}>
           <View style={{flex:0.6, justifyContent: 'center', alignItems: 'center'}}>
               <Text style={{fontFamily: "MuliRegular", fontSize: normalize(16), marginTop: '5%', marginBottom: '6%'}}>You Earned: </Text>
-              <Text style={{fontFamily: "MuliBlack", fontSize: normalize(24), color: '#E84E61'}}>4460 pts</Text>
+              <Text style={{fontFamily: "MuliBlack", fontSize: normalize(24), color: '#E84E61'}}>{this.props.navigation.state.params.points} pts</Text>
           </View>
           <View style={{flex: 0.4, alignItems: 'flex-end'}}>
             <Image source={require("../assets/redRect.png")} style={{height: normalize(225),width: '100%'}} />
