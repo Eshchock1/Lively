@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Component} from 'react';
-import { StyleSheet, Text, View, KeyboardAvoidingView,TouchableOpacity, Dimensions, Image, Modal, Alert, ScrollView, ImageBackground} from 'react-native';
+import { StyleSheet, Text, View, BackHandler,TouchableOpacity, Dimensions, Image, Modal, Alert, ScrollView, ImageBackground} from 'react-native';
 import firebase from "../firebase";
 import {Form, Item, Label, Input, Button} from 'native-base';
 // import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -9,6 +9,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export function normalize(size) {
   return (Dimensions.get("window").width + Dimensions.get("window").height) / (1080/ size)
 }
+
 
 export default class WelcomePage extends Component {
 
@@ -75,8 +76,16 @@ export default class WelcomePage extends Component {
       if (complete == "true") {
         this.setState({triviaComplete:true})
       }
+      BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
     }
+
+  componentWillUnmount() {
+      BackHandler.removeEventListener('hardwareBackPress', this.handleBackButton);
+  }
   
+  handleBackButton() {
+      return true;
+  }
 
   signOut = () => {
     firebase.auth().signOut().then(() => console.log('Signed out'));

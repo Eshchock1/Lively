@@ -11,24 +11,28 @@ const HomeStack = createStackNavigator({
         screen: Events,
         navigationOptions: {
             headerShown: false,
+            gestureEnabled:false,
         }
     },
     EventsInfo: {
         screen: EventsInfo,
         navigationOptions: {
             headerShown: false,
+            gestureEnabled:false,
         }
     },
     QuestionPage: {
         screen: QuestionPage,
         navigationOptions: {
-            headerShown: false
+            headerShown: false,
+            gestureEnabled:false,
         }
     },
     TriviaComplete: {
         screen: TriviaComplete,
         navigationOptions: {
-            headerShown: false
+            headerShown: false,
+            gestureEnabled:false,
         }
     }
     
