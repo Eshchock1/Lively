@@ -21,7 +21,7 @@ Here's why our app is the optimal choice for your television production workflow
 * Manage All Daily Events 
 * Push Trivia to Users through App
 
-### Installation
+### Installation (mobile)
 
 1. Clone the repo
    ```sh
@@ -33,5 +33,19 @@ Here's why our app is the optimal choice for your television production workflow
    ```
 4. Run Expo 
    ```JS
-   expo start
+   
+   
+### Installation (web-app)
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/hassanalawie/LiveLy.git
+   ```
+3. Install NPM packages
+   ```sh
+   npm install
+   ```
+4. Run Npm 
+   ```JS
+   npm start
    ```
