@@ -14,8 +14,6 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
 Upgrade from your traditional methods and keep viewership at all time highs with this fun trivia app
 
 Here's why our app is the optimal choice for your television production workflow:
