@@ -14,7 +14,7 @@
 
 ## About The Project
 
-Intorducing Live.Ly, a fan engagement app focussed on sporting events that is guarenteed to keep viewership as high as can be. There is so much available to watch nowadays, so you can’t fault the customer for leaving to another program the moment things get less entertaining.There is so much available to watch nowadays, so you can’t fault the customer for leaving to another program the moment things get less entertaining.
+Introducing Live.Ly, a fan engagement app focussed on sporting events that is guaranteed to keep viewership as high as can be. There is so much available to watch nowadays, so you can’t fault the customer for leaving to another program the moment things get less entertaining.There is so much available to watch nowadays, so you can’t fault the customer for leaving to another program the moment things get less entertaining.
 
 Lively has 2 main components
 * Mobile app (for users to play trivia) (https://github.com/Eshchock1/Lively/)
