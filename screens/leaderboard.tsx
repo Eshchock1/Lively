@@ -28,14 +28,18 @@ export default class WelcomePage extends Component {
       self.setState({leaderboard:rankings})
       let i = 0
       rankings.forEach(async (e) => {
-        i +=1;
-        console.log(e['name'] == firebase.auth().currentUser.displayName)
-          self.setState({userStats:{score:e['score'], place:i,}})
-          const temp = await AsyncStorage.setItem("rank", i.toString());
+          i +=1;
+          if (e['name'] == firebase.auth().currentUser.displayName) {
+            self.setState({userStats:{score:e['score'], place:i,}})
+            const temp = await AsyncStorage.setItem("rank", i.toString());
+          }
         }
-      
       )
     }});
+    if (!this.state.userStats.place) {
+      self.setState({userStats:{score:0, place:0,}})      
+      const temp = AsyncStorage.setItem("rank", "0");
+    }
   }
 
   componentDidMount() {

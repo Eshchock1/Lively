@@ -80,6 +80,7 @@ export default class WelcomePage extends Component {
 
     async componentDidMount() {
       // AsyncStorage.clear();
+      // AsyncStorage.setItem(this.state.title, "false")
       const complete = await AsyncStorage.getItem(this.state.title);
       if (complete == "true") {
         this.setState({triviaComplete:true})

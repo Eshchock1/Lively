@@ -45,19 +45,38 @@ catch {
 
   
   let b = 0
+  console.log( "init" + b)
+  console.log( "init" + b)
+  console.log( "init" + b)
+  console.log( "init")
+  console.log( "init")
+  console.log( "init")
+  console.log( "init")
+  console.log( "init")
+  console.log( "init")
+  console.log( "init")
 
   try {
     base.database().ref('Leaderboard/' + String(firebase.auth().currentUser.displayName)).once('value', function (snapshot) {
       b = snapshot.val()['points']
     });
+    console.log("current val" + b)
     b += this.props.navigation.state.params.points
+    console.log("plus val" + b)
+
     firebase.database().ref('Leaderboard/' + String(firebase.auth().currentUser.displayName)).update({
       points: b,
       name: firebase.auth().currentUser.displayName,
     })
+    console.log("req val" + b)
   }
 
   catch {
+    console.log("------")
+    console.log("------")
+    console.log("------")
+    console.log("------")
+
     firebase.database().ref('Leaderboard/' + String(firebase.auth().currentUser.displayName)).push({
       points: this.props.navigation.state.params.points,
       name: firebase.auth().currentUser.displayName,
